@@ -92,11 +92,24 @@ class Game {
             console.log("This is false")
           return false
     }
-    selectCard (card) {
-        // add CSS class to "selected"
-    }
 
-    // renderCards {}
+    renderCards (array) {
+        document.getElementById('set-board').innerHTML = '';
+        
+        for (let element of array) {
+            console.log(element.type)
+            let card = document.createElement("div")
+            let image = `<img src="images/${element.image}.jpg" alt="${element.image}">`
+            card.innerHTML = image;
+
+            document.getElementById('set-board').appendChild(card)
+        }
+    }
+    // selectCard (card) {
+    //     // add CSS class to "selected"
+    // }
+
+    //
     // selectCards {}
 
     // checkIfSet(selectedArray) {}
