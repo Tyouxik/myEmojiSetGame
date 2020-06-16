@@ -94,16 +94,41 @@ class Game {
     }
 
     renderCards (array) {
-        document.getElementById('set-board').innerHTML = '';
+      
         
-        for (let element of array) {
-            console.log(element.type)
+        for (let i = 0;  i < array.length; i++) {
             let card = document.createElement("div")
-            let image = `<img src="images/${element.image}.jpg" alt="${element.image}">`
+            let image = `<img src="images/${array[i].image}" alt="${array[i].image}">`
             card.innerHTML = image;
+            card.classList.add('card');
+            console.log(card)
+            if (i < 4) {
+                document.querySelector('#set-board-1').appendChild(card)
+            }
+            else if (i < 8) {
+                document.getElementById('set-board-2').appendChild(card)
+            }
+            else if (i < 12) {
+                document.getElementById('set-board-3').appendChild(card)
+            }
+            // card.addEventListener('click', selectCard(card))
 
-            document.getElementById('set-board').appendChild(card)
+            
         }
+
+
+
+        // for (let element of array) {
+        //     console.log(element.type)
+        //     let card = document.createElement("div")
+        //     let image = `<img src="images/${element.image}" alt="${element.image}">`
+        //     card.innerHTML = image;
+        //     card.classList.add('card');
+            
+        //     // card.addEventListener('click', selectCard(card))
+
+        //     document.getElementById('set-board').appendChild(card)
+        // }
     }
     // selectCard (card) {
     //     // add CSS class to "selected"

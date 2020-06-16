@@ -3,7 +3,7 @@ console.log(cards);
 // console.log(gameOn.cards);
 gameOn.shuffleCards ();
 gameOn.pick12Cards();
-// gameOn.renderCards(gameOn.displayedCards);
+gameOn.renderCards(gameOn.displayedCards);
 // gameOn.renderCards(cards);
 // // console.log(gameOn.cards);
 // console.log(gameOn.displayedCards);

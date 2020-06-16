@@ -1,0 +1,40 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+}
+
+.container {
+    /* border: 1px solid black; */
+}
+
+.container div {
+    /* border: 1px solid black; */
+    width: 100%;
+}
+
+#set-board {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+#set-board-1, #set-board-2, #set-board-3 {display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+}
+#set-board img {
+    width: 100%;
+}
+
+#set-board-1 div, #set-board-2 div, #set-board-3 div {
+    margin:5px;
+        border: 1px solid black;
+
+}
