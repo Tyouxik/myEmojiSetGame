@@ -47,7 +47,6 @@ class Game {
             this.displayedCards.push (this.cards.pop());
         }
     }
-
     checkIfSet(array) {
         let checkAllSameType = 
             array[0].type === array[1].type
@@ -92,16 +91,36 @@ class Game {
             console.log("This is false")
           return false
     }
+    selectCard(event,game) {
+        console.log(event,game)
+        const image = event.target;
+        const cardDiv = event.target.parentNode;
+        const cardIndex = event.target.parentNode.id
+        let selectedCards = this.selectedCards;
+        if(cardDiv.classList.contains('selected')) {
+            cardDiv.classList.remove('selected')
+        } else {
+            cardDiv.classList.add('selected');
+        }
+        // this.selectedCards.push('Hello world')
+        // console.log(this.selectedCards)
+        // console.log(this.displayedCards[cardIndex]);
+        
+        // when I click on a div,
+        // add class selected to the div
+        // add corresponding card to selectedCards
+        // player cannot select more than 3 cards
+    }
 
     renderCards (array) {
       
         
         for (let i = 0;  i < array.length; i++) {
             let card = document.createElement("div")
-            let image = `<img src="images/${array[i].image}" alt="${array[i].image}">`
+            let image = `<img class='emoji' src="images/${array[i].image}" alt="${array[i].image}">`
             card.innerHTML = image;
             card.classList.add('card');
-            console.log(card)
+            card.setAttribute('id', i);
             if (i < 4) {
                 document.querySelector('#set-board-1').appendChild(card)
             }
@@ -111,28 +130,10 @@ class Game {
             else if (i < 12) {
                 document.getElementById('set-board-3').appendChild(card)
             }
-            // card.addEventListener('click', selectCard(card))
 
-            
         }
-
-
-
-        // for (let element of array) {
-        //     console.log(element.type)
-        //     let card = document.createElement("div")
-        //     let image = `<img src="images/${element.image}" alt="${element.image}">`
-        //     card.innerHTML = image;
-        //     card.classList.add('card');
-            
-        //     // card.addEventListener('click', selectCard(card))
-
-        //     document.getElementById('set-board').appendChild(card)
-        // }
     }
-    // selectCard (card) {
-    //     // add CSS class to "selected"
-    // }
+    
 
     //
     // selectCards {}

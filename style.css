@@ -4,13 +4,37 @@ html, body {
     width: 100vw;
 }
 
+body, header, #score {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+}
+
+body {
+    background-color: #ffcb4c;
+}
+
+main {
+    background-color: white;
+}
+
+#score {
+    /* width: 100%; */
+    background-color: #d9d9d9;
+}
 .container {
     /* border: 1px solid black; */
 }
+#id-score > div{
+    border: 1px solid black;
 
+}
 .container div {
     /* border: 1px solid black; */
-    width: 100%;
+    /* width: 100%; */
 }
 
 #set-board {
@@ -35,6 +59,10 @@ html, body {
 
 #set-board-1 div, #set-board-2 div, #set-board-3 div {
     margin:5px;
-        border: 1px solid black;
-
+    /* border: 1px solid black; */
+}
+.selected {
+    border: 5px solid #5271ff;
+    padding: 10px;
+    box-shadow: 5px 10px #d9d9d9;
 }
