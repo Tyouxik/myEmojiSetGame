@@ -1,4 +1,4 @@
-// VARIABLES
+// VARIABLES s
 class Game {
     constructor(cards) {
         this.cards = cards;
