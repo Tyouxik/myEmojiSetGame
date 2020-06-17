@@ -20,11 +20,14 @@ document.querySelectorAll(".emoji").forEach(function (image) {
         gameOn.selectCard(event, gameOn)
         if (gameOn.selectedCards.length === 3) {
 
-            const result = gameOn.checkIfSet(gameOn.selectedCards)
-            console.log(result)
+            const result = gameOn.checkIfSet(gameOn.selectedCards);
+            // console.log(result)
             if (result) {
                 //what function if true?
                 gameOn.isASet()//ok
+            } if (result === false) {
+                // I want to add a little delay
+                setTimeout(gameOn.isNotASet(), 10000) //setTimeout doesn't work
             }
         }
     })
@@ -32,8 +35,8 @@ document.querySelectorAll(".emoji").forEach(function (image) {
 })
 
 
-
-
+// let cardIndex = document.querySelectorAll(".selected")[0].getAttribute(id);
+// console.log(document.querySelectorAll(".selected")[0].getAttribute("id"))
 // Game mechanism
 
 //gameOn.isASet();

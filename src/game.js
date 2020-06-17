@@ -27,7 +27,7 @@ class Game {
     }
     shuffleCards(deck) {
         let cards = deck;
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < 1400; i++) {
             let location1 = Math.floor((Math.random() * cards.length));
             let location2 = Math.floor((Math.random() * cards.length));
             let tmp = cards[location1];
@@ -91,8 +91,6 @@ class Game {
         }
     }
     selectCard(event, game) {
-        console.log(event)
-        console.log(game)
         const image = event.target;
         const cardDiv = event.target.parentNode;
         const cardIndex = event.target.parentNode.id
@@ -127,14 +125,34 @@ class Game {
     }
 
     isASet() {
+        console.log('This is a set')
+        // Add 1 to found set counter
         this.foundSets++
         document.querySelector('#sets-found').innerHTML = this.foundSets
-        // but now you need this element update!!== array[]
+
+        //Remove selected cards
+        for (let i = 0; i < this.selectedCards.length; i++) {
+        let cardIndex = document.querySelectorAll(".selected")[i].getAttribute("id");
+        this.displayedCards.pop(this.displayedCards[cardIndex])
+        console.log(displayedCards) 
+        }
+        //Add 
+        
+
+        this.displayedCards.pop(cardIndex)
         // remove selectedCards from displayed cards
         // add 1 to counter this.foundSets ++
-        console.log(this)//
+        console.log('This is a set')//
     }
-    isNotASet() { }
+    isNotASet() { 
+        
+        const selectedCard = document.querySelectorAll(".selected")
+        gameOn.selectedCards = [];            
+        console.log(selectedCard)
+        for (let i = 0; i < selectedCard.length; i++) {
+            selectedCard[i].classList.remove("selected");
+        }
+    }
     // isFinished {}
 }
 
