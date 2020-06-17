@@ -2,10 +2,7 @@ let gameOn = new Game (cards)
 // console.log(cards);
 // console.log(gameOn.cards);
 
-// Add click event to card image
-document.querySelectorAll(".emoji").forEach(function (image){image.addEventListener('click', function(event){
-    gameOn.selectCard(event,gameOn)
-} )})
+
 
 //Game set up
 
@@ -17,13 +14,14 @@ let display = document.querySelector("#remaining-time")
 let duration = 60 * 10;
 gameOn.startTimer(duration, display)
 
-
+// Add click event to card image (keep it here)
+document.querySelectorAll(".emoji").forEach(function (image){image.addEventListener('click', function(event){
+    gameOn.selectCard(event,gameOn)
+} )})
 
 // Game mechanism
 
-gameOn.isASet()
-
-
+// gameOn.isASet();
 
 // Find a set
 // Player select 3 cards
@@ -31,19 +29,19 @@ gameOn.isASet()
 // If checkIfSet returns true, foundSet()
 
 // Everytime gameOn.selectedCards. length === 3, run checkIfSet on the array.
-if (gameOn.checkIfSet(gameOn.selectedCards) && gameOn.selectedCards) {
-    console.log("This is a set")
-} else if (!gameOn.checkIfSet(gameOn.selectedCards) && gameOn.selectedCards){
-    console.log("This is not a set")}
+// if (gameOn.checkIfSet(gameOn.selectedCards) && gameOn.selectedCards) {
+//     console.log("This is a set")
+// } else if (!gameOn.checkIfSet(gameOn.selectedCards) && gameOn.selectedCards){
+//     console.log("This is not a set")}
 
 
 
 // startTimer (gameOn.remainingTime, 0)
-// gameOn.selectCard()
+// gameOn.selectCard(event,gameOn)
 // gameOn.renderCards(cards);
 // // console.log(gameOn.cards);
 // console.log(gameOn.displayedCards);
-gameOn.checkIfSet(gameOn.selectedCards);
+// gameOn.checkIfSet(gameOn.selectedCards);
 // console.log(gameOn.selectedCards)
 // console.log(gameOn.checkIfSet(gameOn.selectedCards))
 

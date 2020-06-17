@@ -4,6 +4,8 @@ class Game {
         this.cards = cards;
         this.displayedCards = [];
         this.selectedCards = [];
+        this.selectedIndex = [];
+        this.discartedCards = [];
         this.foundSets = 0;
         this.remainingTime = 600;
     }
@@ -24,7 +26,7 @@ class Game {
         }, 1000);
     }
     shuffleCards (deck) {
-        let cards = deck.slice()
+        let cards = deck;
         for (let i = 0; i < 1000; i++) {
             let location1 = Math.floor((Math.random() * cards.length));
             let location2 = Math.floor((Math.random() * cards.length));
@@ -89,6 +91,8 @@ class Game {
         }  
     }
     selectCard(event,game) {
+        console.log(event)
+        console.log(game)
         const image = event.target;
         const cardDiv = event.target.parentNode;
         const cardIndex = event.target.parentNode.id
@@ -123,6 +127,7 @@ class Game {
     }
 
     isASet() {
+        this.foundSets ++
         // remove selectedCards from displayed cards
         // add 1 to counter this.foundSets ++
         console.log(this)
