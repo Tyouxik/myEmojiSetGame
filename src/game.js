@@ -1,7 +1,7 @@
 // VARIABLES s
 class Game {
-    constructor(cards) {
-        this.cards = cards;
+    constructor() {
+        this.cards = getDeck2();
         this.displayedCards = [];
         this.selectedCards = [];
         this.selectedIndex = [];
@@ -25,23 +25,23 @@ class Game {
             }
         }, 1000);
     }
-    shuffleCards(deck) {
-        let cards = deck;
+    shuffleCards() {
         for (let i = 0; i < 1400; i++) {
-            let location1 = Math.floor((Math.random() * cards.length));
-            let location2 = Math.floor((Math.random() * cards.length));
-            let tmp = cards[location1];
-            cards[location1] = cards[location2];
-            cards[location2] = tmp;
+            let location1 = Math.floor((Math.random() * this.cards.length));
+            let location2 = Math.floor((Math.random() * this.cards.length));
+            let tmp = this.cards[location1];
+            this.cards[location1] = this.cards[location2];
+            this.cards[location2] = tmp;
         }
     }
-    pickACard() {
-        this.displayedCards.push(this.cards.pop())
-    }
-    pick12Cards() {
-        for (let i = 0; i < 12; i++) {
-            this.displayedCards.push(this.cards.pop());
+    
+    pick(number) {
+        for (let i = 0; i < number; i++) {
+            this.displayedCards.push(this.nextCard());
         }
+    }
+    nextCard() {
+       return this.cards.pop()
     }
     checkIfSet(array) {
         if (array.length === 0) { return false };
@@ -90,24 +90,29 @@ class Game {
             return false
         }
     }
-    selectCard(event, game) {
+    selectCard(event) {
         const image = event.target;
         const cardDiv = event.target.parentNode;
         const cardIndex = event.target.parentNode.id
 
         if (cardDiv.classList.contains('selected')) {
             cardDiv.classList.remove('selected');
-            game.selectedCards.pop(game.displayedCards[cardIndex])
+            this.selectedCards.pop(this.displayedCards[cardIndex])
 
-        } else if (!cardDiv.classList.contains('selected') && game.selectedCards.length < 3) {
+        } else if (!cardDiv.classList.contains('selected') && this.selectedCards.length < 3) {
             cardDiv.classList.add('selected');
-            game.selectedCards.push(game.displayedCards[cardIndex]);
+            this.selectedCards.push(this.displayedCards[cardIndex]);
         }
     }
-    renderCards(array) {
-        for (let i = 0; i < array.length; i++) {
+    renderCards() {
+        // create constants for all query
+        // add eventListener to new append cards
+        document.querySelector('#set-board-1').innerHTML = '';
+        document.querySelector('#set-board-2').innerHTML = '';
+        document.querySelector('#set-board-3').innerHTML = '';
+        for (let i = 0; i < this.displayedCards.length; i++) {
             let card = document.createElement("div")
-            let image = `<img class='emoji' src="images/${array[i].image}" alt="${array[i].image}">`
+            let image = `<img class='emoji' src="images/${this.displayedCards[i].image}" alt="${this.displayedCards[i].image}">`
             card.innerHTML = image;
             card.classList.add('card');
             card.setAttribute('id', i);
@@ -129,18 +134,18 @@ class Game {
         // Add 1 to found set counter
         this.foundSets++
         document.querySelector('#sets-found').innerHTML = this.foundSets
-
-        //Remove selected cards
-        for (let i = 0; i < this.selectedCards.length; i++) {
-        let cardIndex = document.querySelectorAll(".selected")[i].getAttribute("id");
-        this.displayedCards.pop(this.displayedCards[cardIndex])
-        console.log(displayedCards) 
+         //Remove selected cards
+        const selectedCardElements = document.querySelectorAll(".selected");
+       
+        for (let i = 0; i < 3; i++) {
+        let cardIndex = selectedCardElements[i].getAttribute("id");
+        this.displayedCards.splice(cardIndex, 1, this.nextCard());
+        console.log(this.displayedCards) 
+        console.log(this.selectedCards)
         }
-        //Add 
         
 
-        this.displayedCards.pop(cardIndex)
-        // remove selectedCards from displayed cards
+            // remove selectedCards from displayed cards
         // add 1 to counter this.foundSets ++
         console.log('This is a set')//
     }

@@ -1,4 +1,4 @@
-let gameOn = new Game(cards)
+let gameOn = new Game();
 // console.log(cards);
 // console.log(gameOn.cards);
 
@@ -6,9 +6,9 @@ let gameOn = new Game(cards)
 
 //Game set up
 
-gameOn.shuffleCards(gameOn.cards);
-gameOn.pick12Cards();
-gameOn.renderCards(gameOn.displayedCards);
+gameOn.shuffleCards();
+gameOn.pick(12);
+gameOn.renderCards();
 
 let display = document.querySelector("#remaining-time")
 let duration = 60 * 10;
@@ -17,17 +17,18 @@ gameOn.startTimer(duration, display)
 // Add click event to card image (keep it here)
 document.querySelectorAll(".emoji").forEach(function (image) {
     image.addEventListener('click', function (event) {
-        gameOn.selectCard(event, gameOn)
+        gameOn.selectCard(event)
         if (gameOn.selectedCards.length === 3) {
 
             const result = gameOn.checkIfSet(gameOn.selectedCards);
             // console.log(result)
-            if (result) {
+            if (true) {
                 //what function if true?
-                gameOn.isASet()//ok
+                gameOn.isASet();
+                gameOn.renderCards();
             } if (result === false) {
                 // I want to add a little delay
-                setTimeout(gameOn.isNotASet(), 10000) //setTimeout doesn't work
+                setTimeout(gameOn.isNotASet.bind(gameOn), 1000) //setTimeout doesn't work
             }
         }
     })
