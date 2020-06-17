@@ -1,42 +1,36 @@
 // VARIABLES
 class Game {
     constructor (cards) {
-        this.cards = cards.slice();
+        this.cards = cards;
         this.displayedCards = [];
-        this.selectedCards = [
-            {
-                type: 'cool',
-                color: 'yellow',
-                number: 1,
-                shadow: 'left',
-                image: ''
-              },
-              {
-                type: 'cool',
-                color: 'blue',
-                number: 1,
-                shadow: 'right',
-                image: ''
-              },
-              {
-                type: 'cool',
-                color: 'yellow',
-                number: 1,
-                shadow: 'none',
-                image: ''
-              }
-          ];
+        this.selectedCards = [];
         this.foundSets = 0;
-        this.remainingTime = 10;
+        this.remainingTime = 600;
     }
-
-    shuffleCards () {
+    startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+    
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+            display.textContent = minutes + ":" + seconds;
+    
+            if (--timer < 0) {
+                timer = duration;
+            }
+        }, 1000);
+    }
+    shuffleCards (deck) {
+        let cards = deck.slice()
         for (let i = 0; i < 100; i++) {
-            let location1 = Math.floor((Math.random() * this.cards.length));
-            let location2 = Math.floor((Math.random() * this.cards.length));
+            let location1 = Math.floor((Math.random() * cards.length));
+            let location2 = Math.floor((Math.random() * cards.length));
             let tmp = cards[location1];
-            this.cards[location1] = this.cards[location2];
-            this.cards[location2] = tmp;
+            cards[location1] = cards[location2];
+            cards[location2] = tmp;
         }
     }
     pickACard (){
@@ -48,6 +42,8 @@ class Game {
         }
     }
     checkIfSet(array) {
+        if(array.length === 0) {return false};
+        if(array.length === 3) {
         let checkAllSameType = 
             array[0].type === array[1].type
             && array[1].type === array[2].type;
@@ -81,7 +77,7 @@ class Game {
           if(checkAllSameColor || checkAllDiffColor) {
             if(checkAllSameNumber || checkAllDiffNumber) {
               if(checkAllSameShadow || checkAllDiffShadow) {
-                  console.log("This is true")
+                console.log("This is true")
                 return true
               }
               
@@ -90,22 +86,27 @@ class Game {
         }
             console.log("This is false")
           return false
+        }  
     }
+
     selectCard(event,game) {
-        console.log(event,game)
         const image = event.target;
         const cardDiv = event.target.parentNode;
         const cardIndex = event.target.parentNode.id
-        let selectedCards = this.selectedCards;
-        if(cardDiv.classList.contains('selected')) {
-            cardDiv.classList.remove('selected')
-        } else {
-            cardDiv.classList.add('selected');
-        }
-        // this.selectedCards.push('Hello world')
-        // console.log(this.selectedCards)
-        // console.log(this.displayedCards[cardIndex]);
+    
+            if(cardDiv.classList.contains('selected')) {
+                cardDiv.classList.remove('selected');
+                game.selectedCards.pop(game.displayedCards[cardIndex])
+                
+            } else {
+                cardDiv.classList.add('selected');
+                game.selectedCards.push(game.displayedCards[cardIndex]);
+                }
+            
+        console.log(game.selectedCards);
+        console.log(game.displayedCards);
         
+        // 
         // when I click on a div,
         // add class selected to the div
         // add corresponding card to selectedCards
@@ -133,12 +134,6 @@ class Game {
 
         }
     }
-    
-
-    //
-    // selectCards {}
-
-    // checkIfSet(selectedArray) {}
     // isFinished {}
 }
 
