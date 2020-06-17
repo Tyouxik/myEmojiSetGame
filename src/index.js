@@ -1,4 +1,4 @@
-let gameOn = new Game (cards)
+let gameOn = new Game(cards)
 // console.log(cards);
 // console.log(gameOn.cards);
 
@@ -15,13 +15,28 @@ let duration = 60 * 10;
 gameOn.startTimer(duration, display)
 
 // Add click event to card image (keep it here)
-document.querySelectorAll(".emoji").forEach(function (image){image.addEventListener('click', function(event){
-    gameOn.selectCard(event,gameOn)
-} )})
+document.querySelectorAll(".emoji").forEach(function (image) {
+    image.addEventListener('click', function (event) {
+        gameOn.selectCard(event, gameOn)
+        if (gameOn.selectedCards.length === 3) {
+
+            const result = gameOn.checkIfSet(gameOn.selectedCards)
+            console.log(result)
+            if (result) {
+                //what function if true?
+                gameOn.isASet()//ok
+            }
+        }
+    })
+
+})
+
+
+
 
 // Game mechanism
 
-// gameOn.isASet();
+//gameOn.isASet();
 
 // Find a set
 // Player select 3 cards
