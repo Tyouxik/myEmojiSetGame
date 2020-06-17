@@ -1,6 +1,6 @@
 // VARIABLES
 class Game {
-    constructor (cards) {
+    constructor(cards) {
         this.cards = cards;
         this.displayedCards = [];
         this.selectedCards = [];
@@ -14,18 +14,18 @@ class Game {
         setInterval(function () {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
-    
+
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
-    
+
             display.textContent = minutes + ":" + seconds;
-    
+
             if (--timer < 0) {
                 timer = duration;
             }
         }, 1000);
     }
-    shuffleCards (deck) {
+    shuffleCards(deck) {
         let cards = deck;
         for (let i = 0; i < 1000; i++) {
             let location1 = Math.floor((Math.random() * cards.length));
@@ -35,79 +35,79 @@ class Game {
             cards[location2] = tmp;
         }
     }
-    pickACard (){
-        this.displayedCards.push (this.cards.pop())       
+    pickACard() {
+        this.displayedCards.push(this.cards.pop())
     }
-    pick12Cards () {
+    pick12Cards() {
         for (let i = 0; i < 12; i++) {
-            this.displayedCards.push (this.cards.pop());
+            this.displayedCards.push(this.cards.pop());
         }
     }
     checkIfSet(array) {
-        if(array.length === 0) {return false};
-        if(array.length === 3) {
-        let checkAllSameType = 
-            array[0].type === array[1].type
-            && array[1].type === array[2].type;
-        let checkAllSameColor = 
-            array[0].color === array[1].color
-            && array[1].color === array[2].color;
-        let checkAllSameNumber = 
-            array[0].number === array[1].number
-            && array[1].number === array[2].number;
-        let checkAllSameShadow = 
-            array[0].shadow === array[1].shadow
-            && array[1].shadow === array[2].shadow;
-        let checkAllDiffType = 
-            array[0].type !== array[1].type
-            && array[1].type !== array[2].type
-            && array[0].type !== array[2].type;
-        let checkAllDiffColor = 
-            array[0].color !== array[1].color
-            && array[1].color !== array[2].color
-            && array[0].color !== array[2].color;
-        let checkAllDiffNumber = 
-            array[0].number !== array[1].number
-            && array[1].number !== array[2].number
-            && array[0].number !== array[2].number;
-        let checkAllDiffShadow = 
-            array[0].shadow !== array[1].shadow
-            && array[1].shadow !== array[2].shadow
-            && array[0].shadow !== array[2].shadow;
-        
-        if (checkAllSameType || checkAllDiffType) {
-          if(checkAllSameColor || checkAllDiffColor) {
-            if(checkAllSameNumber || checkAllDiffNumber) {
-              if(checkAllSameShadow || checkAllDiffShadow) {
-                console.log("This is true")
-                return true
-              }
-              
+        if (array.length === 0) { return false };
+        if (array.length === 3) {
+            let checkAllSameType =
+                array[0].type === array[1].type
+                && array[1].type === array[2].type;
+            let checkAllSameColor =
+                array[0].color === array[1].color
+                && array[1].color === array[2].color;
+            let checkAllSameNumber =
+                array[0].number === array[1].number
+                && array[1].number === array[2].number;
+            let checkAllSameShadow =
+                array[0].shadow === array[1].shadow
+                && array[1].shadow === array[2].shadow;
+            let checkAllDiffType =
+                array[0].type !== array[1].type
+                && array[1].type !== array[2].type
+                && array[0].type !== array[2].type;
+            let checkAllDiffColor =
+                array[0].color !== array[1].color
+                && array[1].color !== array[2].color
+                && array[0].color !== array[2].color;
+            let checkAllDiffNumber =
+                array[0].number !== array[1].number
+                && array[1].number !== array[2].number
+                && array[0].number !== array[2].number;
+            let checkAllDiffShadow =
+                array[0].shadow !== array[1].shadow
+                && array[1].shadow !== array[2].shadow
+                && array[0].shadow !== array[2].shadow;
+
+            if (checkAllSameType || checkAllDiffType) {
+                if (checkAllSameColor || checkAllDiffColor) {
+                    if (checkAllSameNumber || checkAllDiffNumber) {
+                        if (checkAllSameShadow || checkAllDiffShadow) {
+                            console.log("This is true")
+                            return true
+                        }
+
+                    }
+                }
             }
-          }
-        }
             console.log("This is false")
-          return false
-        }  
+            return false
+        }
     }
-    selectCard(event,game) {
+    selectCard(event, game) {
         console.log(event)
         console.log(game)
         const image = event.target;
         const cardDiv = event.target.parentNode;
         const cardIndex = event.target.parentNode.id
-    
-            if(cardDiv.classList.contains('selected')) {
-                cardDiv.classList.remove('selected');
-                game.selectedCards.pop(game.displayedCards[cardIndex])
-                
-            } else if (!cardDiv.classList.contains('selected') && game.selectedCards.length < 3){
-                cardDiv.classList.add('selected');
-                game.selectedCards.push(game.displayedCards[cardIndex]);
-                }
+
+        if (cardDiv.classList.contains('selected')) {
+            cardDiv.classList.remove('selected');
+            game.selectedCards.pop(game.displayedCards[cardIndex])
+
+        } else if (!cardDiv.classList.contains('selected') && game.selectedCards.length < 3) {
+            cardDiv.classList.add('selected');
+            game.selectedCards.push(game.displayedCards[cardIndex]);
+        }
     }
-    renderCards (array) {
-        for (let i = 0;  i < array.length; i++) {
+    renderCards(array) {
+        for (let i = 0; i < array.length; i++) {
             let card = document.createElement("div")
             let image = `<img class='emoji' src="images/${array[i].image}" alt="${array[i].image}">`
             card.innerHTML = image;
@@ -127,12 +127,14 @@ class Game {
     }
 
     isASet() {
-        this.foundSets ++
+        this.foundSets++
+        document.querySelector('#sets-found').innerHTML = this.foundSets
+        // but now you need this element update!!== array[]
         // remove selectedCards from displayed cards
         // add 1 to counter this.foundSets ++
-        console.log(this)
+        console.log(this)//
     }
-    isNotASet() {}
+    isNotASet() { }
     // isFinished {}
 }
 
