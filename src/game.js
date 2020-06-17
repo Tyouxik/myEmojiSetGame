@@ -25,7 +25,7 @@ class Game {
     }
     shuffleCards (deck) {
         let cards = deck.slice()
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 1000; i++) {
             let location1 = Math.floor((Math.random() * cards.length));
             let location2 = Math.floor((Math.random() * cards.length));
             let tmp = cards[location1];
@@ -88,7 +88,6 @@ class Game {
           return false
         }  
     }
-
     selectCard(event,game) {
         const image = event.target;
         const cardDiv = event.target.parentNode;
@@ -98,24 +97,12 @@ class Game {
                 cardDiv.classList.remove('selected');
                 game.selectedCards.pop(game.displayedCards[cardIndex])
                 
-            } else {
+            } else if (!cardDiv.classList.contains('selected') && game.selectedCards.length < 3){
                 cardDiv.classList.add('selected');
                 game.selectedCards.push(game.displayedCards[cardIndex]);
                 }
-            
-        console.log(game.selectedCards);
-        console.log(game.displayedCards);
-        
-        // 
-        // when I click on a div,
-        // add class selected to the div
-        // add corresponding card to selectedCards
-        // player cannot select more than 3 cards
     }
-
     renderCards (array) {
-      
-        
         for (let i = 0;  i < array.length; i++) {
             let card = document.createElement("div")
             let image = `<img class='emoji' src="images/${array[i].image}" alt="${array[i].image}">`
@@ -134,6 +121,13 @@ class Game {
 
         }
     }
+
+    isASet() {
+        // remove selectedCards from displayed cards
+        // add 1 to counter this.foundSets ++
+        console.log(this)
+    }
+    isNotASet() {}
     // isFinished {}
 }
 
