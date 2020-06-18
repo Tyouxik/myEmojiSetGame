@@ -107,9 +107,14 @@ class Game {
     renderCards() {
         // create constants for all query
         // add eventListener to new append cards
-        document.querySelector('#set-board-1').innerHTML = '';
-        document.querySelector('#set-board-2').innerHTML = '';
-        document.querySelector('#set-board-3').innerHTML = '';
+        const setBoard1 = document.querySelector('#set-board-1');
+        const setBoard2 = document.querySelector('#set-board-2');
+        const setBoard3 = document.querySelector('#set-board-3');
+        
+        setBoard1.innerHTML = '';
+        setBoard2.innerHTML = '';
+        setBoard3.innerHTML = '';
+
         for (let i = 0; i < this.displayedCards.length; i++) {
             let card = document.createElement("div")
             let image = `<img class='emoji' src="images/${this.displayedCards[i].image}" alt="${this.displayedCards[i].image}">`
@@ -117,13 +122,13 @@ class Game {
             card.classList.add('card');
             card.setAttribute('id', i);
             if (i < 4) {
-                document.querySelector('#set-board-1').appendChild(card)
+                setBoard1.appendChild(card)
             }
             else if (i < 8) {
-                document.getElementById('set-board-2').appendChild(card)
+                setBoard2.appendChild(card)
             }
             else if (i < 12) {
-                document.getElementById('set-board-3').appendChild(card)
+                setBoard3.appendChild(card)
             }
 
         }

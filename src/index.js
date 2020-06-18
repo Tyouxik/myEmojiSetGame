@@ -15,17 +15,18 @@ let duration = 60 * 10;
 gameOn.startTimer(duration, display)
 
 // Add click event to card image (keep it here)
-document.querySelectorAll(".emoji").forEach(function (image) {
+const cardImages = document.querySelectorAll(".emoji")
+cardImages.forEach(function (image) {
     image.addEventListener('click', function (event) {
         gameOn.selectCard(event)
         if (gameOn.selectedCards.length === 3) {
 
             const result = gameOn.checkIfSet(gameOn.selectedCards);
             // console.log(result)
-            if (true) {
-                //what function if true?
+            if (true) { //careful I have to change that to result
                 gameOn.isASet();
                 gameOn.renderCards();
+                // add eventListener click select cards
             } if (result === false) {
                 // I want to add a little delay
                 setTimeout(gameOn.isNotASet.bind(gameOn), 1000) //setTimeout doesn't work
@@ -46,14 +47,6 @@ document.querySelectorAll(".emoji").forEach(function (image) {
 // Player select 3 cards
 // When 3 cards are selected, gameOn.checkIFset(gameOn.selectedCards)
 // If checkIfSet returns true, foundSet()
-
-// Everytime gameOn.selectedCards. length === 3, run checkIfSet on the array.
-// if (gameOn.checkIfSet(gameOn.selectedCards) && gameOn.selectedCards) {
-//     console.log("This is a set")
-// } else if (!gameOn.checkIfSet(gameOn.selectedCards) && gameOn.selectedCards){
-//     console.log("This is not a set")}
-
-
 
 // startTimer (gameOn.remainingTime, 0)
 // gameOn.selectCard(event,gameOn)

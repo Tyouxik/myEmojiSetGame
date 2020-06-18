@@ -14,7 +14,6 @@ function getDeck2() {
         for (let l = 0; l < shadows.length; l++) {
           let card = {type:types[i], color: colors[j], number: numbers[k], shadow: shadows[l], image: `${types[i]}-${colors[j]}-${numbers[k]}-${shadows[l]}.jpg`};
           deck.push(card);
-//           console.log(`${types[i]}-${colors[j]}-${numbers[k]}-${shadows[l]}`)
         }  
       }
     }
@@ -22,3 +21,5 @@ function getDeck2() {
   return deck
 }
 
+// Biggest challenge integrate a function into the whole structure, 
+// and deciding if a function needs an argument or not
