@@ -15,12 +15,26 @@ body, header, #score {
 
 body {
     background-color: #ffcb4c;
-}
+    position: relative;
 
+}
+header {
+    position: inherit;
+}
 main {
     background-color: white;
+    position: unset;
 }
 
+#game-over {
+    position: absolute;
+    background-color: white;
+    padding: 5%;
+}
+.btn {
+    background-color: #ff1717;
+    border: 1px solid black
+}
 #score {
     /* width: 100%; */
     background-color: #d9d9d9;
@@ -65,4 +79,12 @@ main {
     border: 5px solid #5271ff;
     padding: 10px;
     box-shadow: 5px 10px #d9d9d9;
+}
+
+#set-display {
+    width:100%;
+    /* position: fixed; */
+}
+.hidden {
+    visibility: collapse;
 }

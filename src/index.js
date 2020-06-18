@@ -12,12 +12,11 @@ gameOn.renderCards();
 addClickToCards();
 
 let display = document.querySelector("#remaining-time")
-let duration = 60 * 10;
+let duration = 10;
 gameOn.startTimer(duration, display)
-console.log(gameOn.remainingTime)
 
 // Add click event to card image (keep it here)
-
+// console.log(document.querySelector("body > main").classList.add('hidden'))
 
 // All the action done by the click event on card images
 function clickAction (event) {
@@ -42,6 +41,10 @@ function clickAction (event) {
             addClickToCards();
         } 
     }
+    //Update final score displayed in div #game-over
+    let finalScore = document.querySelector("#game-over > p > span");
+        finalScore.innerText = gameOn.foundSets;
+        console.log(gameOn.foundSets)
 }
 
 function addClickToCards(){
@@ -52,6 +55,13 @@ function addClickToCards(){
         })
     })
 } 
+
+
+let tryAgainBtn = document.querySelector("#game-over > button");
+tryAgainBtn.addEventListener('click', function(event){
+    console.log(event);
+    window.location.reload();
+})
 
 // gameOn.isFinished()
 // let cardIndex = document.querySelectorAll(".selected")[0].getAttribute(id);

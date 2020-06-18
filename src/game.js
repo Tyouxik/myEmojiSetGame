@@ -19,12 +19,16 @@ class Game {
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
             this.remainingTime = timer;
+            // console.log(this.remainingTime)
+            // console.log(this)
             display.textContent = minutes + ":" + seconds;
 // console.log(timer)
             if (--timer < 0) {
-                //visibility hidden for main
-                // create a button invisible in htlm
+                timer = 0;
+                document.querySelector("body > main").classList.add('hidden');
+                document.querySelector("#game-over").classList.remove('hidden');
             }
+
         }, 1000);
     }
     shuffleCards() {
@@ -36,7 +40,6 @@ class Game {
             this.cards[location2] = tmp;
         }
     }
-    
     pick(number) {
         for (let i = 0; i < number; i++) {
             this.displayedCards.push(this.nextCard());
@@ -135,8 +138,6 @@ class Game {
             }
         }
     }
-
-
     isASet() {
         // console.log('This is a set')
         // Add 1 to found set counter
@@ -162,10 +163,7 @@ class Game {
             selectedCard[i].classList.remove("selected");
         }
     }
-    isFinished () { 
-        //when timer is at 0, send to gameOver.html
-        // Display  in `Congrats you found ${this.foundSets} sets`
-    }
+
 }
 
 
