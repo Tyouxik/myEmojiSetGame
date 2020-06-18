@@ -14,37 +14,50 @@ body, header, #score {
 }
 
 body {
+    width:100vw;
     background-color: #ffcb4c;
-    position: relative;
+    /* position: relative; */
 
 }
-#instructions {
-    position: inherit
+
+main {
+    background-color: white;
+    padding:10px;
+    /* position: absolute;
+    top: 10vh; */
 }
+
+#game-over {
+    position: absolute;
+    bottom:45vh;
+    background-color: white;
+    padding: 5%;
+}
+
 #instruction-page {
     background-color: white;
     width:100%;
-    position:inherit;
+    /* position:absolute;
+    top: 70vh */
 }
-.set-example {
-    height: 10em;
-    border:1px solid grey
+#help {
+    padding:10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    padding: 6px 10px;
+    margin: 5px;
 }
 
 header {
     position: inherit;
 }
-main {
-    background-color: white;
-    position: unset;
-}
-
-
-
-#game-over {
-    position: absolute;
-    background-color: white;
-    padding: 5%;
+.set-example {
+    height: 10em;
+    border:1px solid grey
 }
 
 .btn {
@@ -52,12 +65,13 @@ main {
     border: 1px solid black
 }
 #score {
-    /* width: 100%; */
+    /* height: 10% */
     background-color: #d9d9d9;
+    display: flex;
+    flex-wrap: nowrap;
 }
 #id-score > div{
     border: 1px solid black;
-
 }
 
 #set-board {
@@ -66,7 +80,8 @@ main {
 	flex-wrap: nowrap;
 	justify-content: flex-start;
 	align-items: stretch;
-	align-content: stretch;
+    align-content: stretch;
+    /* height:50vh; */
 }
 
 #set-board-1, #set-board-2, #set-board-3 {display: flex;
@@ -92,7 +107,6 @@ main {
 
 #set-display {
     width:100%;
-    /* position: fixed; */
 }
 .hidden {
     visibility: collapse;

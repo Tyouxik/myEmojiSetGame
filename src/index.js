@@ -62,8 +62,13 @@ tryAgainBtn.addEventListener('click', function(event){
     window.location.reload();
 })
 //Add function refresh to refresh button
-let refreshBtn = document.querySelector('#refresh')
-refreshBtn.addEventListener('click', function(event) {gameOn.refresh()})
+let refreshBtn = document.querySelector('#refresh');
+refreshBtn.addEventListener('click', function(event) {gameOn.refresh()});
+
+// Add refresh to New start
+let newGame = document.querySelector('#new-game');
+newGame.addEventListener('click', function(event){
+    window.location.reload();})
 
 //Show/Hide the instructions
 
