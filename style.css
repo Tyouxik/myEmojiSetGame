@@ -21,6 +21,16 @@ body {
 #instructions {
     position: inherit
 }
+#instruction-page {
+    background-color: white;
+    width:100%;
+    position:inherit;
+}
+.set-example {
+    height: 10em;
+    border:1px solid grey
+}
+
 header {
     position: inherit;
 }
@@ -28,6 +38,8 @@ main {
     background-color: white;
     position: unset;
 }
+
+
 
 #game-over {
     position: absolute;

@@ -12,7 +12,7 @@ gameOn.renderCards();
 addClickToCards();
 
 let display = document.querySelector("#remaining-time")
-let duration = 5;
+let duration = 60 * 10;
 gameOn.startTimer(duration, display)
 
 // Add click event to card image (keep it here)
@@ -56,16 +56,16 @@ function addClickToCards(){
     })
 } 
 
-
+//Page reload when Try again button is pressed
 let tryAgainBtn = document.querySelector("#game-over > button");
 tryAgainBtn.addEventListener('click', function(event){
     window.location.reload();
 })
-
+//Add function refresh to refresh button
 let refreshBtn = document.querySelector('#refresh')
 refreshBtn.addEventListener('click', function(event) {gameOn.refresh()})
-console.log(gameOn.cards)
-console.log(gameOn.displayedCards)
+
+//Show/Hide the instructions
 
 // gameOn.isFinished()
 // let cardIndex = document.querySelectorAll(".selected")[0].getAttribute(id);

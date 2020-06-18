@@ -8,12 +8,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  </nav>
     <header class="container">
       <h1>Emoji Set</h1>
       <p>The pattern game that will drive you crazy!</p>
     </header>
-    <div></div>
     <main class="container">
       <div id="score" class="container">
         <div><p>Remaining time: <span id="remaining-time">0</span></p></div>
@@ -34,8 +32,42 @@
       <button class="btn">Try again</button>
     </div>
     <div id="help">
-      <div id="instructions"><a href="instructions.html">Instructions</a>
+      <button id="instruction">Instructions</button>
       <button id="refresh">Refresh</button></div>
+  </div>
+  <div id="instruction-page" >
+    <h1>Let's play</h1>
+    <p>You have 10 minutes to find as many sets as possible. <br>
+    You don't know what a set is ? Have a look at the instructions below. <br>
+  Now you are ready to play</p>
+  <button id="start-game">Start Game</button>
+    <h1>Instructions</h1>
+    <p>Each card as 4 features:</p>
+    <ul>
+      <li>Type: cool, laugh, hug</li>
+      <li>Color: yellow, blue, red</li>
+      <li>Number: 1, 2, 3</li>
+      <li>Shadow: left, right, none</li>
+  </ul>
+  <p>
+    A 'Set' consists of three cards in which each feature is EITHER the same on each card OR is different on each card. That is to say, any feature in the 'Set' of three cards is either common to all three cards or is different on each card.
+  </p>
+  <h2>Example of a good set</h2>
+  <div >
+    <img class='set-example' src="images/cool-yellow-2-none.jpg" alt="cool-yellow-2-none">
+    <img class='set-example' src="images/cool-red-2-left.jpg" alt="cool-red-2-left">
+    <img class='set-example' src="images/cool-blue-2-right.jpg" alt="cool-blue-2-right">
+  </div>
+  <p>All three cards have a cool emoji, all have different colors, all have two emojis, and all have different shadows.</p>
+  <h2>Example of a wrong set</h2>
+  <div>
+    <img class='set-example' src="images/cool-yellow-1-left.jpg" alt="cool-yellow-1-left">
+    <img class='set-example' src="images/hug-yellow-2-left.jpg" alt="hug-yellow-2-left">
+    <img class='set-example' src="images/hug-yellow-3-left.jpg" alt="hug-yellow-3-left">
+  </div>
+  <p>All three cards have same color, all have different number of emojis, and all have same shadow. <br> 
+    BUT there is 2 hug emojis and a cool one, it is neither all the same nor all different.</p>
+
   </div>
     <!-- Javascript files -->
     <script src="src/cards.js"></script>
