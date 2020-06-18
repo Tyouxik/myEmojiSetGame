@@ -43,16 +43,9 @@ main {
     /* width: 100%; */
     background-color: #d9d9d9;
 }
-.container {
-    /* border: 1px solid black; */
-}
 #id-score > div{
     border: 1px solid black;
 
-}
-.container div {
-    /* border: 1px solid black; */
-    /* width: 100%; */
 }
 
 #set-board {

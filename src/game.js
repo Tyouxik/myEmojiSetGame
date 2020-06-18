@@ -27,6 +27,7 @@ class Game {
                 timer = 0;
                 document.querySelector("body > main").classList.add('hidden');
                 document.querySelector("#game-over").classList.remove('hidden');
+                document.querySelector("#help").classList.add('hidden');
             }
 
         }, 1000);
@@ -163,7 +164,14 @@ class Game {
             selectedCard[i].classList.remove("selected");
         }
     }
+    refresh() {
+        this.cards.push(...this.displayedCards.splice(0,6))
+        this.pick(6)
+        this.renderCards()
+        addClickToCards()
 
+        console.log('I am fresh')
+    }
 }
 
 
