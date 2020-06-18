@@ -18,6 +18,9 @@ body {
     position: relative;
 
 }
+#instructions {
+    position: inherit
+}
 header {
     position: inherit;
 }
@@ -31,6 +34,7 @@ main {
     background-color: white;
     padding: 5%;
 }
+
 .btn {
     background-color: #ff1717;
     border: 1px solid black
