@@ -7,21 +7,23 @@ class Game {
         this.selectedIndex = [];
         this.discartedCards = [];
         this.foundSets = 0;
-        this.remainingTime = 600;
+        this.remainingTime;
     }
     startTimer(duration, display) {
         var timer = duration, minutes, seconds;
         setInterval(function () {
+
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
 
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
-
+            this.remainingTime = timer;
             display.textContent = minutes + ":" + seconds;
-
+// console.log(timer)
             if (--timer < 0) {
-                timer = duration;
+                //visibility hidden for main
+                // create a button invisible in htlm
             }
         }, 1000);
     }
@@ -94,6 +96,8 @@ class Game {
         const image = event.target;
         const cardDiv = event.target.parentNode;
         const cardIndex = event.target.parentNode.id
+        console.log(event)
+        console.log(this.selectedCards, "here")
 
         if (cardDiv.classList.contains('selected')) {
             cardDiv.classList.remove('selected');
@@ -110,7 +114,6 @@ class Game {
         const setBoard1 = document.querySelector('#set-board-1');
         const setBoard2 = document.querySelector('#set-board-2');
         const setBoard3 = document.querySelector('#set-board-3');
-        
         setBoard1.innerHTML = '';
         setBoard2.innerHTML = '';
         setBoard3.innerHTML = '';
@@ -130,12 +133,12 @@ class Game {
             else if (i < 12) {
                 setBoard3.appendChild(card)
             }
-
         }
     }
 
+
     isASet() {
-        console.log('This is a set')
+        // console.log('This is a set')
         // Add 1 to found set counter
         this.foundSets++
         document.querySelector('#sets-found').innerHTML = this.foundSets
@@ -145,25 +148,24 @@ class Game {
         for (let i = 0; i < 3; i++) {
         let cardIndex = selectedCardElements[i].getAttribute("id");
         this.displayedCards.splice(cardIndex, 1, this.nextCard());
-        console.log(this.displayedCards) 
+        // console.log(this.displayedCards) 
         console.log(this.selectedCards)
         }
-        
-
-            // remove selectedCards from displayed cards
-        // add 1 to counter this.foundSets ++
-        console.log('This is a set')//
+        this.selectedCards = [];
+        console.log('This is a set')
     }
     isNotASet() { 
         
         const selectedCard = document.querySelectorAll(".selected")
         gameOn.selectedCards = [];            
-        console.log(selectedCard)
         for (let i = 0; i < selectedCard.length; i++) {
             selectedCard[i].classList.remove("selected");
         }
     }
-    // isFinished {}
+    isFinished () { 
+        //when timer is at 0, send to gameOver.html
+        // Display  in `Congrats you found ${this.foundSets} sets`
+    }
 }
 
 
