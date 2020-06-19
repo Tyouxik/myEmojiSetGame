@@ -12,7 +12,7 @@ gameOn.renderCards();
 addClickToCards();
 
 let display = document.querySelector("#remaining-time")
-let duration = 60 * 2;
+let duration = 60 * 10;
 gameOn.startTimer(duration, display)
 
 // Add click event to card image (keep it here)
