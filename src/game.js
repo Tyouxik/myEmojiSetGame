@@ -165,12 +165,13 @@ class Game {
         }
     }
     refresh() {
-        this.cards.push(...this.displayedCards.splice(0,6))
-        this.pick(6)
-        this.renderCards()
-        addClickToCards()
-
-        console.log('I am fresh')
+        this.cards.unshift(...this.displayedCards.splice(0,6));
+        this.pick(6);
+        this.renderCards();
+        addClickToCards();
+console.log(this.cards)
+console.log(this.displayedCards)
+        
     }
 }
 
